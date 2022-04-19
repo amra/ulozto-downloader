@@ -1,4 +1,5 @@
 import requests
+import qrcode
 from PIL import Image
 from io import BytesIO
 
@@ -48,6 +49,9 @@ def tkinter_user_prompt(img_url, print_func):
     return value
 
 def cli_user_prompt(img_url, print_func):
+    qr = qrcode.QRCode()
+    qr.add_data(img_url)
+    qr.print_ascii()
     print("Read captcha from " + img_url)
     value = input("Captcha: ")
     return value
