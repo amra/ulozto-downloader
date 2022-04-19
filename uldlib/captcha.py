@@ -47,6 +47,10 @@ def tkinter_user_prompt(img_url, print_func):
     root.destroy()
     return value
 
+def cli_user_prompt(img_url, print_func):
+    print("Read captcha from " + img_url)
+    value = input("Captcha: ")
+    return value
 
 class AutoReadCaptcha:
     def __init__(self, model_path, model_url, print_func=print):

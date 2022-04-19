@@ -13,6 +13,8 @@ def run():
     )
     parser.add_argument('url', metavar='URL', type=str,
                         help="URL from Uloz.to (tip: enter in 'quotes' because the URL contains ! sign)")
+    parser.add_argument('--cli-captcha', type=bool, default=False,
+                        help='Enter captcha in command line')
     parser.add_argument('--parts', metavar='N', type=int, default=10,
                         help='Number of parts that will be downloaded in parallel')
     parser.add_argument('--output', metavar='DIRECTORY',
@@ -28,6 +30,8 @@ def run():
         model_download_url = "https://github.com/JanPalasek/ulozto-captcha-breaker/releases/download/v2.2/model.tflite"
         captcha_solve_fnc = captcha.AutoReadCaptcha(
             model_path, model_download_url)
+    elif args.cli_captcha:
+        captcha_solve_fnc = captcha.cli_user_prompt
     else:
         captcha_solve_fnc = captcha.tkinter_user_prompt
 
