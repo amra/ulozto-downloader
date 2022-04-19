@@ -13,7 +13,7 @@ def run():
     )
     parser.add_argument('url', metavar='URL', type=str,
                         help="URL from Uloz.to (tip: enter in 'quotes' because the URL contains ! sign)")
-    parser.add_argument('--cli-captcha', type=bool, default=False,
+    parser.add_argument('--cli-captcha', default=False, action="store_true",
                         help='Enter captcha in command line')
     parser.add_argument('--parts', metavar='N', type=int, default=10,
                         help='Number of parts that will be downloaded in parallel')
